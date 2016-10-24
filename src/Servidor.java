@@ -28,25 +28,13 @@ public class Servidor implements Runnable {
             
             abrirServerSocket();
                 while (true){
-//                    synchronized(estado){
-//                        try {
-//                             String t = Thread.currentThread().getName();
-//                            System.out.println("###--------> Servidor currentThread! " + t);
-//                            estado.wait();
-//                           
-//                        } catch (InterruptedException ex) {
-//                            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    }
-                
-                
                 Socket clientSocket = null;
                     try {
                         
                          i++;
                          clientSocket = this.serverSocket.accept();
                         
-                         System.out.println("cliente--->  " +clientSocket);
+                         System.out.println("SERVIDOR: CLIENTE --->  " +clientSocket);
                          
                          Thread log = new Thread(new GerarLog(clientSocket, ok), "cliente"+i);
                          log.start();
@@ -57,7 +45,6 @@ public class Servidor implements Runnable {
                         Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
                     } 
                }
-            
     }
     private void dormir(){
             try {
