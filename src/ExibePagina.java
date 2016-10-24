@@ -26,7 +26,7 @@ public class ExibePagina implements Runnable{
                  
                 while(estado.bloqueado){
                     String c = Thread.currentThread().getName();
-                    System.out.println("PARADO AGUARDANDO ATUALIZAÇÃO: " + c);
+                    System.out.println("PARADO AGUARDANDO ATUALIZAÇÃO DE DADOS: " + c);
                     estado.wait();
                 }
                 
@@ -36,7 +36,7 @@ public class ExibePagina implements Runnable{
             }
         }
        String c = Thread.currentThread().getName();
-        System.out.println("Liberado: " + c);
+        System.out.println("LIBERADO: " + c);
         try {
             int nbytes = clientSocket.getInputStream().read(b);
             if (nbytes <= 0) {

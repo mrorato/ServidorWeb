@@ -29,7 +29,7 @@ public class BuscaDados implements Runnable{
         while(true){
             synchronized(estado) {
               estado.bloqueado = true;
-                System.out.println("Bloqueado");
+                System.out.println("BLOQUEADO - ATUALIZANDO");
             }
               try {
                   
@@ -204,14 +204,14 @@ public class BuscaDados implements Runnable{
                     synchronized(estado) {
                         estado.bloqueado = false;
                         estado.notifyAll();
-                        System.out.println("Desbloqueou");
+                        System.out.println("FINALZADA ATUALIZAÇÃO - DESBLOQUEADO");
                     }
                 } catch (Exception e) {
                  e.printStackTrace();
                 }
                      
             try {
-                System.out.println("entrou no sleep");
+                System.out.println("ATUALIZAÇÃO PARADA POR 30 SEGUNDOS");
 
                 Thread.sleep(30*1000);
             } catch (Exception ex) {

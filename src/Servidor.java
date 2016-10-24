@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 public class Servidor implements Runnable {
     
-    protected int          serverPort;
+    protected int serverPort;
     protected ServerSocket serverSocket   = null;
     private Principal.Estado estado;
     int i = 0;
@@ -26,12 +26,12 @@ public class Servidor implements Runnable {
                          i++;
                          clientSocket = this.serverSocket.accept();
                         
-                         System.out.println("SERVIDOR: CLIENTE --->  " +clientSocket);
+                         System.out.println("SERVIDOR: NOVA REQUISIÇÃO " +clientSocket);
                          
-                         Thread log = new Thread(new GerarLog(clientSocket, ok), "cliente"+i);
+                         Thread log = new Thread(new GerarLog(clientSocket, ok), "CLIENTE "+i);
                          log.start();
                          
-                         new Thread(new ExibePagina(clientSocket, estado), "Cliente"+i).start();
+                         new Thread(new ExibePagina(clientSocket, estado), "CLIENTE "+i).start();
                       
                     } catch (Exception ex) {
                         Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,7 +48,7 @@ public class Servidor implements Runnable {
             
         }
         private void abrirServerSocket() {
-            System.out.println("###--------> Servidor abrirServerSocket!");
+            System.out.println("aBERTO SERVERSOCKET");
             try {
                 this.serverSocket = new ServerSocket(this.serverPort);
                 System.out.println("###--------> Porta 8080 aberta!" + serverSocket);

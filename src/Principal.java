@@ -9,7 +9,7 @@ public class Principal {
  
     public static void main(String[] args) throws IOException {
         new Thread(new BuscaDados(estado), "Atualizador").start();
-        new Thread(new Servidor(8080, estado), "Servidor").start();
+        new Thread(new Servidor(8080, estado), "SERVIDOR").start();
         
     }
     

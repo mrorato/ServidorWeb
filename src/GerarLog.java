@@ -26,7 +26,7 @@ public class GerarLog implements Runnable{
 
    public void run() {
     String c = Thread.currentThread().getName();
-    System.out.println("Cliente esperando gravar log -> " + c);
+    System.out.println("AGUARDANDO PARA GRAVAR LOG -> " + c);
     synchronized(ok){
        File arquivoTxt = new File("./logs/"+"log_programa.txt");
        
@@ -34,18 +34,18 @@ public class GerarLog implements Runnable{
            try{
                //Cria o arquivo
                arquivoTxt.createNewFile();
-               System.out.println("###--------> Arquivo LOG ATUALIZADO por " + c);
+               System.out.println("###--------> LOG ATUALIZADO: " + c);
 
                //salva o arquivo
                FileWriter  writer = new FileWriter(arquivoTxt);
 
                writer.write("\n\n");
                writer.write("IP:"+clientSocket.getInetAddress()+"\n");
-               writer.write("  Data:"+ new Date()+"\n");
+               writer.write("  DATA:"+ new Date()+"\n");
                writer.write("\n---------------------\n");
 
                writer.close();
-               System.out.println("###--------> Arquivo LOG -> IP:"+clientSocket.getInetAddress());
+               System.out.println("LOG GRAVADO PARA -> "+ c +" -> IP:"+clientSocket.getInetAddress());
            }
            catch (IOException e){
                e.printStackTrace();
@@ -53,10 +53,10 @@ public class GerarLog implements Runnable{
        }
        else{
            try{
-             System.out.println("###--------> entrou no gravar log: " + c);
+             System.out.println("INICIOU LOG -> " + c);
                FileReader reader = new FileReader("./logs/"+"log_programa.txt");
                BufferedReader br = new BufferedReader(reader);
-               System.out.println("###--------> lendo log " + c);
+               System.out.println("LENDO LOG -> " + c);
                String linha = br.readLine();
                //PrintWriter writer = new PrintWriter (arquivoTxt);
                FileWriter txt = new FileWriter(arquivoTxt, true);
@@ -70,13 +70,13 @@ public class GerarLog implements Runnable{
 
                br.close();
                reader.close();
-               System.out.println("###--------> parou de ler" + c);
+               System.out.println("FINALIZADA LEITURA -> " + c);
                writer.printf("%n%n");
-               writer.printf("IP:"+clientSocket.getInetAddress()+ "Data:"+ new Date()+"%n");
+               writer.printf("IP:"+clientSocket.getInetAddress()+ "   DATA:"+ new Date()+"%n");
                writer.printf("---------------------%n");
 
                writer.close();
-               System.out.println("###--------> Arquivo LOG gravador por "+ c +" -> IP:"+clientSocket.getInetAddress());
+               System.out.println("LOG GRAVADO PARA -> "+ c +" -> IP:"+clientSocket.getInetAddress());
            }
            catch(IOException err){
                err.printStackTrace();
