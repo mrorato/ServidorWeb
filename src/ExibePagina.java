@@ -7,14 +7,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class WebServer implements Runnable{
+public class ExibePagina implements Runnable{
 
     protected Socket clientSocket = null;
     private byte[] b = new byte[2048];
-    private ServidorWeb.Estado estado;
+    private Principal.Estado estado;
     
     
-    public WebServer(Socket clientSocket, ServidorWeb.Estado estado) {
+    public ExibePagina(Socket clientSocket, Principal.Estado estado) {
         this.clientSocket = clientSocket;
         this.estado = estado;
     }
@@ -65,7 +65,7 @@ public class WebServer implements Runnable{
                     byte[] b_arquivo = new byte[(int)fin.getChannel().size()];
                     fin.read(b_arquivo);
                     fin.close();        
-                    String testando = new String(b_arquivo, "UTF-8").replace("#$nome", new WebDados().getNome()).replace("#$dia", new WebDados().getDia()).replace("#$tempo", new WebDados().getTempo()).replace("#$sigla", new WebDados().getSigla()).replace("#$max", new WebDados().getMaxima()).replace("#$min", new WebDados().getMinima());
+                    String testando = new String(b_arquivo, "UTF-8").replace("#$nome", new BuscaDados().getNome()).replace("#$dia", new BuscaDados().getDia()).replace("#$tempo", new BuscaDados().getTempo()).replace("#$sigla", new BuscaDados().getSigla()).replace("#$max", new BuscaDados().getMaxima()).replace("#$min", new BuscaDados().getMinima());
                     clientSocket.getOutputStream().write(testando.getBytes("UTF-8"));
                 }catch (Exception e){
                     e.printStackTrace();

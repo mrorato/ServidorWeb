@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -9,23 +8,16 @@ public class Servidor implements Runnable {
     
     protected int          serverPort;
     protected ServerSocket serverSocket   = null;
-    protected Thread       estaExecutando = null;
-    private ServidorWeb.Estado estado;
+    private Principal.Estado estado;
     int i = 0;
     private Object ok = new Object();
-    public Servidor(int port, ServidorWeb.Estado estado) {
+    public Servidor(int port, Principal.Estado estado) {
         this.serverPort = port;
         this.estado = estado;
         
     }
-
-   
-    
      @Override
     public void run() {
-        
-            //abrirServerSocket();
-            
             abrirServerSocket();
                 while (true){
                 Socket clientSocket = null;
@@ -39,7 +31,7 @@ public class Servidor implements Runnable {
                          Thread log = new Thread(new GerarLog(clientSocket, ok), "cliente"+i);
                          log.start();
                          
-                         new Thread(new WebServer(clientSocket, estado), "Cliente"+i).start();
+                         new Thread(new ExibePagina(clientSocket, estado), "Cliente"+i).start();
                       
                     } catch (Exception ex) {
                         Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,8 +47,6 @@ public class Servidor implements Runnable {
             }
             
         }
-             
-
         private void abrirServerSocket() {
             System.out.println("###--------> Servidor abrirServerSocket!");
             try {

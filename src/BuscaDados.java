@@ -9,16 +9,16 @@ import java.net.URL;
 import java.net.URLConnection;
 
 
-public class WebDados implements Runnable{
+public class BuscaDados implements Runnable{
 
-    private ServidorWeb.Estado estado;
+    private Principal.Estado estado;
     private Random random = new Random(System.currentTimeMillis());
     static  String nome, dia, tempo, maxima, minima, sigla;
     
-    public WebDados(ServidorWeb.Estado estado) {
+    public BuscaDados(Principal.Estado estado) {
         this.estado = estado;
     }
-    public WebDados() {
+    public BuscaDados() {
         
     }
     
