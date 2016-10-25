@@ -38,15 +38,6 @@ public class Servidor implements Runnable {
                     } 
                }
     }
-    private void dormir(){
-            try {
-                wait();
-//                Thread.sleep((int) (rnd.nextDouble() * 100.0));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            
-        }
         private void abrirServerSocket() {
             System.out.println("aBERTO SERVERSOCKET");
             try {

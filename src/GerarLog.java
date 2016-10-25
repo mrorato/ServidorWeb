@@ -82,6 +82,6 @@ public class GerarLog implements Runnable{
                err.printStackTrace();
            }
        }
-     }
+    }
    }
 }
