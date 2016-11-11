@@ -16,7 +16,6 @@ public class Servidor implements Runnable {
     public Servidor(int port, Principal.Estado estado) {
         this.serverPort = port;
         this.estado = estado;
-
     }
 
     @Override
@@ -45,7 +44,6 @@ public class Servidor implements Runnable {
         System.out.println("aBERTO SERVERSOCKET");
         try {
             this.serverSocket = new ServerSocket(this.serverPort);
-
             System.out.println("###--------> Porta 8080 aberta!" + serverSocket);
             System.out.println("###--------> Aguardando conexão do cliente...");
         } catch (IOException e) {

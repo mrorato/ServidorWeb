@@ -16,8 +16,6 @@ public class ExibePagina implements Runnable {
         this.clientSocket = clientSocket;
         this.estado = estado;
     }
-//    String c = Thread.currentThread().getName();
-//    System.out.prinln("Cliente webserver-> " + c);
 
     public void run() {
         synchronized (estado) {
