@@ -7,12 +7,8 @@ import java.util.Date;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-
-
-
 public class GerarLog implements Runnable{
 
-    
     private Socket clientSocket;
     private Object ok;
         
@@ -20,9 +16,6 @@ public class GerarLog implements Runnable{
         this.clientSocket = clientSocket;
         this.ok = ok;
     }
-
-
-
 
    public void run() {
     String c = Thread.currentThread().getName();
